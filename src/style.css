@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: #201f54ea;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+canvas {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+header {
+  max-height: 25%;
+  min-height: 25%;
+  width: 65vw;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  background-color: rgba(136, 144, 151, 0.189);
+  border: 10px double rgba(187, 158, 255, 0.785);
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#resetButton {
+  position: absolute;
+  z-index: 4;
+  padding: 15px 30px;
+  border-radius: 8px; 
+  background-color: rgba(124, 79, 215, 0.299);
+  border: 3px solid blueviolet;
+  font-family: 'Russo One', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  -webkit-text-stroke: 1.5px rgba(88, 48, 152, 0.726);
+}
+
+h1 {
+  color: white;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 2.7rem;
+  text-align: center;
+}
+
+p {
+  color: white;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 1px;
+}
