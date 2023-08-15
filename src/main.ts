@@ -52,7 +52,7 @@ canvas.width = 800;
 canvas.height = 600;
 const context = canvas.getContext('2d')!;
 document.querySelector('#app')!.append(canvas);
-canvas.addEventListener('pointerdown', onMouseDown);
+
 
 const balls: Ball[] = [
   {
@@ -161,12 +161,15 @@ const stopwatch = new Stopwatch();
 let timerStarted = false;
 
 gameLoop();
+canvas.addEventListener('pointerdown', onMouseDown);
 
+// function below runs after eventlistener above is activated
 function onMouseDown(e: PointerEvent) {
 
   for (let i = 0; i < balls.length; i++) {
+    // keeps looping while balls still exist in canvas
 
-    const ball = balls[i];
+    const ball = balls[i]; // i = how many balls have been clicked
     const d = distance(ball, { x: e.offsetX, y: e.offsetY });
 
     if (d < ball.radius && !ball.clicked) {
@@ -186,6 +189,7 @@ function onMouseDown(e: PointerEvent) {
         console.log(`Total time: ${elapsedTime.toFixed(2)} seconds`);
         h1!.innerHTML = `Your time is: ${elapsedTime.toFixed(2)} seconds. Good job! :)`;
 
+        // makes reset button visible, therefore clickable
         let resetButton = document.getElementById('resetButton');
         resetButton?.classList.remove('hidden');
       }
@@ -195,17 +199,21 @@ function onMouseDown(e: PointerEvent) {
   }
 }
 
-resetButton?.addEventListener('click', () => {
-  resetButton.classList.add('hidden')
+// listens for click on reset button
+resetButton!.addEventListener('click', () => {
+  resetButton!.classList.add('hidden'); // hides reset button again
 
-  balls.forEach(ball => ball.clicked = false);
+  // makes all balls' 'clicked' value false again
   h1!.innerHTML = `Click on a ball bellow to begin!`;
   p!.innerHTML = `Try to click all of the balls within the canvas as fast as you can. <br> PS you're gonna be being timed ;) Best of luck.`;
 
+  // resets time counted by stopwatch to 0ms, says the counter hasn't started counting yet
   stopwatch.reset();
   timerStarted = false;
 
+  // removes all objects from balls array
   balls.length = 0;
+  // add the balls back into the array
   balls.push(
     {
       radius: 90,
